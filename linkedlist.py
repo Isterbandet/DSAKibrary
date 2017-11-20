@@ -61,6 +61,7 @@ class LinkedList:
                 del node
                 return
             current = current.getNext()
+
     def print(self):
         current = self.head
         while current != None:
