@@ -4,9 +4,10 @@ class Node:
         self._next = None
 
     def getData(self):
-            return self._data
+        return self._data
     def setData(self, d):
         self._data = d
+
     def getNext(self):
         return self._next
 
@@ -47,14 +48,6 @@ class LinkedList:
             current = current.getNext
         return None
 
-    def remove(self, node):
-        current = self.head
-        while current != None:
-            if current.getNext() == node:
-                current.setNext( current.getNext().getNext())
-                del node
-                return
-            current = current.getNext()
 
     def remove(self, node):
         if self.head == node:
