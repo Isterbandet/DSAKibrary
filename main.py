@@ -74,7 +74,7 @@ class TestBinaryTree(unittest.TestCase):
         binarytree.insert(17)
         self.assertEqual(binarytree.size(),2)
 
-    def test03_Print(self):
+    def test03_to_List(self):
         binarytree = BinarySearchTree()
         binarytree.setData(10)
         binarytree.insert(17)
@@ -82,6 +82,14 @@ class TestBinaryTree(unittest.TestCase):
         binarytree.insert(14)
         self.assertEqual(binarytree.toList(), [10,14,16,17])
 
+
+    def test03_to_find(self):
+        binarytree = BinarySearchTree()
+        binarytree.setData(10)
+        binarytree.insert(17)
+        binarytree.insert(16)
+        binarytree.insert(14)
+        self.assertEqual(binarytree.find(14),14 )
 
 
 
