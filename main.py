@@ -1,6 +1,7 @@
 import unittest
 from linkedlist import Node
 from linkedlist import LinkedList
+from binarysearchtree import BinarySearchTree
 
 class TestNodeAndList(unittest.TestCase):
     def test01_get_Data( self ):
@@ -63,6 +64,10 @@ class TestLinkedList(unittest.TestCase):
         a.add(2)
         a.add(3)
         self.assertEqual(a.remove(2),True )
+class TestBinaryTree(unittest.TestCase):
+    def test01_is_Empty(self):
+        binarytree = BinarySearchTree()
+        self.assertEqual(binarytree.isEmpty(),True)
 
 
 
