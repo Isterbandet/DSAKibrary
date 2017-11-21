@@ -61,6 +61,40 @@ class BinarySearchTree:
             return self
 
 
-    #find,print,tolist
+    def print(self):
+        if self._left != None:
+            self._left.print()
+        print(self._data)
+        if self._right != None:
+            self._right.print()
+
+    def find(self, d):
+        if self._left != None:
+            self._left.find()
+        if self._data == d:
+            return self._data
+        if self._right != None:
+            self._right.find()
+        else:
+            return None
+
+    def toList(self,x = []):
+        if self._left != None:
+            self._left.toList()
+        x.append(self._data)
+        if self._right != None:
+            self._right.toList()
+        return x
+
+
+
+
+
+
+
+
+
+
+        # find,print,tolist
 
 

@@ -45,7 +45,7 @@ class LinkedList:
         while current != None:
             if current.getData() == d:
                 return current
-            current = current.getNext
+            current = current.getNext()
         return None
 
 

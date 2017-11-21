@@ -23,12 +23,7 @@ class TestLinkedList(unittest.TestCase):
         a = LinkedList()
         self.assertEqual(a.isEmpty(),True)
 
-    def test02_Test_Add(self):
-        a = LinkedList()
-        a.add(1)
-        a.add(2)
-        a.add(3)
-        self.assertEqual(a.add(4),)
+
 
     def test03_Test_Size(self):
         a = LinkedList()
@@ -49,21 +44,25 @@ class TestLinkedList(unittest.TestCase):
         a.add(1)
         a.add(2)
         a.add(3)
-        self.assertEqual(a.search(2), True)
+        self.assertEqual(a.search(2).getData(), 2)
 
     def test06_Test_incert(self):
         a = LinkedList()
         a.add(1)
         a.add(2)
         a.add(3)
-        self.assertEqual(a.insert(3,1), 3)
+        a.insert(4, a.search(2))
+        self.assertEqual(a.search(2).getNext().getData(), 4)
 
     def test02_Test_Remove(self):
         a = LinkedList()
         a.add(1)
         a.add(2)
         a.add(3)
-        self.assertEqual(a.remove(2),True )
+        n = a.search(2)
+        a.remove(n)
+        self.assertEqual(a.search(2),None)
+
 class TestBinaryTree(unittest.TestCase):
     def test01_is_Empty(self):
         binarytree = BinarySearchTree()
@@ -75,6 +74,14 @@ class TestBinaryTree(unittest.TestCase):
         binarytree.insert(17)
         self.assertEqual(binarytree.size(),2)
 
+    def test03_Print(self):
+        binarytree = BinarySearchTree()
+        binarytree.setData(10)
+        binarytree.insert(17)
+        binarytree.insert(16)
+        binarytree.insert(14)
+        self.assertEqual(binarytree.toList(), [10,14,16,17])
+
 
 
 
@@ -82,8 +89,3 @@ class TestBinaryTree(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main(verbosity=2)
 
-lili = LinkedList()
-lili.add(1)
-lili.add(2)
-
-lili.print()
