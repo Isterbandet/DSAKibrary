@@ -28,7 +28,7 @@ class TestLinkedList(unittest.TestCase):
         a.add(1)
         a.add(2)
         a.add(3)
-        self.assertEqual(a.add(4),4)
+        self.assertEqual(a.add(4),)
 
     def test03_Test_Size(self):
         a = LinkedList()
@@ -68,6 +68,12 @@ class TestBinaryTree(unittest.TestCase):
     def test01_is_Empty(self):
         binarytree = BinarySearchTree()
         self.assertEqual(binarytree.isEmpty(),True)
+
+    def test02_Incert(self):
+        binarytree = BinarySearchTree()
+        binarytree.setData(10)
+        binarytree.insert(17)
+        self.assertEqual(binarytree.size(),2)
 
 
 
