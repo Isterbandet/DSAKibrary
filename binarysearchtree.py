@@ -68,22 +68,31 @@ class BinarySearchTree:
         if self._right != None:
             self._right.print()
 
-    def find(self, d):
-        if self._left != None:
-            self._left.find()
-        if self._data == d:
-            return self._data
-        if self._right != None:
-            self._right.find()
-        else:
+    def find(self, x):
+        if not self.getData():
             return None
+        if x < self.getData():
+            if self._left:
+                return self._left.find(x)
+            else:
+                return None
+        elif x> self.getData():
+            if self._right:
+                return self._right.find(x)
+            else:
+                return None
+        else:
+            return self
 
-    def toList(self,x = []):
+
+
+    def toList(self):
+        x = []
         if self._left != None:
-            self._left.toList()
+            x += self._left.toList()
         x.append(self._data)
         if self._right != None:
-            self._right.toList()
+            x += self._right.toList()
         return x
 
 
