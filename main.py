@@ -160,15 +160,54 @@ class TestGrapghNow(unittest.TestCase):
         graph.addEdge("N","O",1)
         graph.addEdge("O","P",1)
         graph.addEdge("P","L",1)
-        graph.addEdge("L","H",1)
+
         self.assertEqual(graph.findDFSPath("M","H"),['M', 'I', 'E', 'A', 'B', 'C', 'D', 'H'])
+
+
+    def test05_ShowBothPaths(self):
+        graph = Graph()
+        graph.addVertex("A")
+        graph.addVertex("B")
+        graph.addVertex("C")
+        graph.addVertex("D")
+        graph.addVertex("E")
+        graph.addVertex("F")
+        graph.addVertex("G")
+        graph.addVertex("H")
+        graph.addVertex("I")
+        graph.addVertex("J")
+        graph.addVertex("K")
+        graph.addVertex("L")
+        graph.addVertex("M")
+        graph.addVertex("N")
+        graph.addVertex("O")
+        graph.addVertex("P")
+
+        graph.addEdge("A","B",1)
+        graph.addEdge("B","C",1)
+        graph.addEdge("C","D",1)
+        graph.addEdge("D","H",1)
+        graph.addEdge("C","G",1)
+        graph.addEdge("G","K",1)
+        graph.addEdge("A","E",1)
+        graph.addEdge("E","I",1)
+        graph.addEdge("I","M",1)
+        graph.addEdge("M","N",1)
+        graph.addEdge("N","J",1)
+        graph.addEdge("J","F",1)
+        graph.addEdge("N","O",1)
+        graph.addEdge("O","P",1)
+        graph.addEdge("P","L",1)
+        graph.addEdge("L","H",1)
+
+        self.assertEqual(graph.findAllPaths("M","H"),[['M', 'N', 'O', 'P', 'L', 'H'], ['M', 'I', 'E', 'A', 'B', 'C', 'D', 'H']])
 
     def test03_Weight(self):
         graph = Graph()
         graph.addVertex("A")
         graph.addVertex("B")
-        graph.addEdge("A","B",1)
-        self.assertEqual(graph.areNeighbours("A","B"),1)
+        graph.addEdge("A","B",2)
+        self.assertEqual(graph.cost("A","B"),2)
 
 
 

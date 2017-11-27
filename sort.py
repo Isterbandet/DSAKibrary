@@ -49,7 +49,7 @@ def shellSort(array):
         gap //= 2 # ny gap
 
 
-
+"""
 bubblelist=[]
 for i in range(8000):
     bubblelist.append( random.randint( 1,100) )
@@ -81,3 +81,5 @@ t1 = time.time()
 shellSort( shellist )
 t2 = time.time()
 print( "ShellSort sort took {:.4f} seconds".format( t2-t1 ) )
+
+"""
