@@ -16,12 +16,12 @@ class Graph:
         if v in self._table.keys():
             del self._table[v]
 
-    def addEdge(self, v1, v2):
+    def addEdge(self, v1, v2, weight):
         if not v1 in self._table.keys():
-            self.addVertex(v1)
+            self.addVertex((v1, weight))
         self._table[v1].add(v2)
         if not v2 in self._table.keys():
-            self.addVertex(v2)
+            self.addVertex((v2, weight))
         self._table[v2].add(v1)
 
     def removeEdge(self,v1,v2):
@@ -36,11 +36,15 @@ class Graph:
     def findDFSPath(self, v1, v2, visited = []):
         if self.areNeighbours(v1,v2):
             return [v1,v2]
+
         for n in self._table[v1]:
             if n not in visited:
                 p = self.findDFSPath(n, v2, visited + [v1])
+                
                 if p != None:
-                    return  [v1] + p
+                    return [v1] + p
+
+
         return None
 
     def isConnected(self):
@@ -49,6 +53,10 @@ class Graph:
                 if v1 != v2 and not self.findDFSPath(v1,v2):
                     return False
         return True
+
+
+
+
 
 
 

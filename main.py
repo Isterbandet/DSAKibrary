@@ -3,6 +3,8 @@ from linkedlist import Node
 from linkedlist import LinkedList
 from binarysearchtree import BinarySearchTree
 from graph import Graph
+from sort import *
+import random, time
 
 class TestNodeAndList(unittest.TestCase):
     def test01_get_Data( self ):
@@ -98,7 +100,7 @@ class TestGrapghNow(unittest.TestCase):
         graph = Graph()
         graph.addVertex("A")
         graph.addVertex("B")
-        graph.addEdge("A","B")
+        graph.addEdge("A","B",1)
         self.assertEqual(graph.areNeighbours("A","B"),1)
 
     def test04_AreNoNeighboursh(self):
@@ -107,9 +109,9 @@ class TestGrapghNow(unittest.TestCase):
         graph.addVertex("B")
         graph.addVertex("C")
         graph.addVertex("D")
-        graph.addEdge("A","B")
-        graph.addEdge("B","C")
-        graph.addEdge("C","D")
+        graph.addEdge("A","B",1)
+        graph.addEdge("B","C",1)
+        graph.addEdge("C","D",1)
         self.assertEqual(graph.areNeighbours("A","C"),False)
 
 
@@ -119,9 +121,9 @@ class TestGrapghNow(unittest.TestCase):
         graph.addVertex("B")
         graph.addVertex("C")
         graph.addVertex("D")
-        graph.addEdge("A","B")
-        graph.addEdge("B","C")
-        graph.addEdge("C","D")
+        graph.addEdge("A","B",1)
+        graph.addEdge("B","C",1)
+        graph.addEdge("C","D",1)
         self.assertEqual(graph.isConnected(),True)
 
     def test05_Labyrinten(self):
@@ -139,23 +141,34 @@ class TestGrapghNow(unittest.TestCase):
         graph.addVertex("K")
         graph.addVertex("L")
         graph.addVertex("M")
-        graph.addEdge("A","B")
-        graph.addEdge("B","C")
-        graph.addEdge("C","D")
-        graph.addEdge("D","H")
-        graph.addEdge("C","G")
-        graph.addEdge("G","K")
-        graph.addEdge("A","E")
-        graph.addEdge("E","I")
-        graph.addEdge("I","M")
-        graph.addEdge("M","N")
-        graph.addEdge("N","J")
-        graph.addEdge("J","F")
-        graph.addEdge("N","O")
-        graph.addEdge("O","P")
-        graph.addEdge("P","L")
+        graph.addVertex("N")
+        graph.addVertex("O")
+        graph.addVertex("P")
+
+        graph.addEdge("A","B",1)
+        graph.addEdge("B","C",1)
+        graph.addEdge("C","D",1)
+        graph.addEdge("D","H",1)
+        graph.addEdge("C","G",1)
+        graph.addEdge("G","K",1)
+        graph.addEdge("A","E",1)
+        graph.addEdge("E","I",1)
+        graph.addEdge("I","M",1)
+        graph.addEdge("M","N",1)
+        graph.addEdge("N","J",1)
+        graph.addEdge("J","F",1)
+        graph.addEdge("N","O",1)
+        graph.addEdge("O","P",1)
+        graph.addEdge("P","L",1)
+        graph.addEdge("L","H",1)
         self.assertEqual(graph.findDFSPath("M","H"),['M', 'I', 'E', 'A', 'B', 'C', 'D', 'H'])
 
+    def test03_Weight(self):
+        graph = Graph()
+        graph.addVertex("A")
+        graph.addVertex("B")
+        graph.addEdge("A","B",1)
+        self.assertEqual(graph.areNeighbours("A","B"),1)
 
 
 
