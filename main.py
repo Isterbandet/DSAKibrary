@@ -5,7 +5,7 @@ from binarysearchtree import BinarySearchTree
 from graph import Graph
 from sort import *
 import random, time
-
+""" 
 class TestNodeAndList(unittest.TestCase):
     def test01_get_Data( self ):
         firstnode = Node(17)
@@ -164,7 +164,7 @@ class TestGrapghNow(unittest.TestCase):
         self.assertEqual(graph.findDFSPath("M","H"),['M', 'I', 'E', 'A', 'B', 'C', 'D', 'H'])
 
 
-    def test05_ShowBothPaths(self):
+   def test05_ShowBothPaths(self):
         graph = Graph()
         graph.addVertex("A")
         graph.addVertex("B")
@@ -216,4 +216,4 @@ if __name__ == '__main__':
     unittest.main(verbosity=2)
 
 
-
+"""
