@@ -186,7 +186,7 @@ def heapSort(arr):
     for i in range(n - 1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # swap
         heapify(arr, i, 0)
-
+"""
 bubblelist=[]
 for i in range(8000):
     bubblelist.append( random.randint( 1,100) )
@@ -248,3 +248,5 @@ n = len(heaplistt)
 mergeSort( heaplistt,0,n-1 )
 t2 = time.time()
 print( "Heap sort took {:.4f} seconds".format( t2-t1 ) )
+
+"""

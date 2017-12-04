@@ -1,3 +1,6 @@
+from queu import LLQueue
+from stack import LLStack
+
 class Graph:
     def __init__(self):
         self._table = {}
@@ -42,6 +45,7 @@ class Graph:
                 if v == v2:
                     return True
         return False
+    """
     def findDFSPath(self, v1, v2, visited = []):
         if self.areNeighbours(v1, v2):
             return [v1, v2]
@@ -54,7 +58,7 @@ class Graph:
                     if p != None:
                         return [v1] + p
         return None
-
+    """
     def isConnected(self):
         for v1 in self._table.keys():
             for v2 in self._table.keys():
@@ -102,13 +106,53 @@ class Graph:
                     for paths in p:
                         allpaths.append( [v1] + paths)
 
-
-
-
         return allpaths
 
+    def findBFSPath(self, v1, v2):
+        visited = []
+        queue = LLQueue()
+        queue.enqueue((v1, [v1]))
+        while not queue.isEmpty():
+            (node, path) = queue.dequeue()
+            # visit node..
+            visited.append(node)
+            if node == v2:
+                # found path!
+                return path
 
+            neighbours = self._table[node]
+            for (n, w) in neighbours:
+                if n not in visited:
+                    queue.enqueue((n, path + [n]))
+        return None
 
+    def findCheapestPath(self, v1, v2, visited=[]):
+        cheapest_cost = None
+        cheapest_path = None
+        cheapest_is_neighbour = False
+        if v2 not in visited and self.areNeighbours(v1, v2):
+            cheapest_cost = self.cost(v1, v2)
+            cheapest_path = [v1, v2]
+            cheapest_is_neighbour = True
 
+        # else use BFS..
+        if v1 in self._table.keys():
+            neighbours = self._table[v1]
+            for (n, w) in neighbours:
+                if n not in visited:
+                    (p, cost) = self.findCheapestPath(n, v2, visited + [v1])
+                    if not cheapest_cost and not cheapest_path:
+                        cheapest_cost = cost
+                        cheapest_path = p
+                    elif cost != 0 and cost < cheapest_cost:
+                        cheapest_cost = cost
+                        cheapest_path = p
+                        cheapest_is_neighbour = False
 
+            if cheapest_path != None:
+                if cheapest_is_neighbour:
+                    return (cheapest_path, cheapest_cost)
+                else:
+                    return ([v1] + cheapest_path, cheapest_cost + self.cost(v1, cheapest_path[0]))
+        return (None, 0)
 
